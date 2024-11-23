@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DysConnect - Professional Practice 2</title>
+    <style>
+        @font-face {
+            font-family: OpenDyslexic;
+            src: url(assets/fonts/OpenDyslexic-Regular.otf);
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        header {
+            background-color: #fff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #e5e5e5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 10vh;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+        }
+        .logo img {
+            height: 80px;
+            margin-right: 10px;
+        }
+        .app-name {
+            color: #BC8310;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        main {
+            display: flex;
+            flex-grow: 1;
+        }
+        nav {
+            min-width: 15vw;
+            background-color: #f3f4f6;
+            padding: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            margin-bottom: 30px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 16px;
+        }
+        nav ul li.active a {
+            font-weight: bold;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            position: relative;
+        }
+        .eye-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #BC8310;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .eye-button:hover {
+            background-color: #d97706;
+        }
+        .eye-button svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        .control-panel {
+            position: absolute;
+            bottom: 70px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+            width: 250px;
+        }
+        .control-panel h3 {
+            margin-top: 0;
+        }
+        .control-panel label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .control-panel input, .control-panel select {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="assets/images/ANU Logo.webp" alt="ANU Logo">
+            </div>
+            <div class="app-name">DysConnect</div>
+        </header>
+        <main>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#">Professional Practice</a></li>
+                    <li><a href="#">Announcement</a></li>
+                    <li><a href="#">Course Forum</a></li>
+                    <li><a href="#">Course Guidelines</a></li>
+                    <li><a href="#">Lectures & Tutorials</a></li>
+                    <li><a href="#">Lecture Recordings</a></li>
+                </ul>
+            </nav>
+            <div class="content">
+                <h1>COMP8260/ENGN8260 - Professional Practice 2</h1>
+                <p>
+                    This is one of two professional practice courses (the other is ENGN6250: Holistic
+                    Thinking and Communication) for engineering and computing graduate students
+                    that focus on developing professional and communication skills for the 21st-
+                    century workplace.
+                </p>
+                <p>
+                    The course builds upon individual capacity and further develops students'
+                    professional skills, values, and attributes in ways that directly complement their
+                    technical expertise. These skills will enable students to perform effectively in the
+                    complex context in which engineering and computer professionals operate. In
+                    particular, the course will provide students with skills to interpret, critically
+                    evaluate, and justify their own and others' decisions with reference to ethical
+                    and professional standards and expectations. The practical focus on these skills
+                    and their integration into the engineering and computing curriculum reflects the
+                    contemporary expectations of professional organisations (e.g. Engineers
+                    Australia and the Australian Computer Society) and enhances the employment
+                    opportunities of graduates.
+                </p>
+                <button id="eyeButton" class="eye-button" aria-label="Toggle text settings">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                    </svg>
+                </button>
+                <div id="controlPanel" class="control-panel">
+                    <h3>Text Settings</h3>
+                    <label for="fontSize">Font Size: <span id="fontSizeValue">16</span>px</label>
+                    <input type="range" id="fontSize" min="12" max="24" value="16">
+                    
+                    <label for="lineHeight">Line Height: <span id="lineHeightValue">1.5</span></label>
+                    <input type="range" id="lineHeight" min="1" max="2" step="0.1" value="1.5">
+                    
+                    <label for="letterSpacing">Letter Spacing: <span id="letterSpacingValue">0</span>px</label>
+                    <input type="range" id="letterSpacing" min="-2" max="10" value="0">
+                    
+                    <label for="fontFamily">Font Family:</label>
+                    <select id="fontFamily">
+                        <option value="Arial, sans-serif">Default (Arial)</option>
+                        <option value="'OpenDyslexic', sans-serif">OpenDyslexic</option>
+                        <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
+                        <option value="'Verdana', sans-serif">Verdana</option>
+                        <option value="'Helvetica', sans-serif">Helvetica</option>
+                    </select>
+                    
+                    <label for="bgColor">Background Color</label>
+                    <input type="color" id="bgColor" value="#ffffff">
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        const eyeButton = document.getElementById('eyeButton');
+        const controlPanel = document.getElementById('controlPanel');
+        const content = document.querySelector('.content');
+        
+        const fontSize = document.getElementById('fontSize');
+        const lineHeight = document.getElementById('lineHeight');
+        const letterSpacing = document.getElementById('letterSpacing');
+        const fontFamily = document.getElementById('fontFamily');
+        const bgColor = document.getElementById('bgColor');
+        
+        const fontSizeValue = document.getElementById('fontSizeValue');
+        const lineHeightValue = document.getElementById('lineHeightValue');
+        const letterSpacingValue = document.getElementById('letterSpacingValue');
+        
+        eyeButton.addEventListener('click', () => {
+            controlPanel.style.display = controlPanel.style.display === 'none' ? 'block' : 'none';
+        });
+        
+        function updateTextSettings() {
+            content.style.fontSize = `${fontSize.value}px`;
+            content.style.lineHeight = lineHeight.value;
+            content.style.letterSpacing = `${letterSpacing.value}px`;
+            content.style.fontFamily = fontFamily.value;
+            content.style.backgroundColor = bgColor.value;
+            
+            fontSizeValue.textContent = fontSize.value;
+            lineHeightValue.textContent = lineHeight.value;
+            letterSpacingValue.textContent = letterSpacing.value;
+        }
+        
+        fontSize.addEventListener('input', updateTextSettings);
+        lineHeight.addEventListener('input', updateTextSettings);
+        letterSpacing.addEventListener('input', updateTextSettings);
+        fontFamily.addEventListener('change', updateTextSettings);
+        bgColor.addEventListener('input', updateTextSettings);
+        
+        updateTextSettings();
+    </script>
+</body>
+</html>
